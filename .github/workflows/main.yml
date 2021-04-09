@@ -82,8 +82,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v1
-        with:
-          name: my-artifact
+        
       
       - name: folders
         run:  ls
@@ -95,4 +94,4 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO_DEBUG }}
           token: ${{ secrets.TELEGRAM_TOKEN_DEBUG }}
           message: send message Emshanov Pavel
-          document: my-artifact/hw.exe
+          document: "my-artifact/*.exe"
