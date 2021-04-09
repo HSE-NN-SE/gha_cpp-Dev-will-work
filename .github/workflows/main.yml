@@ -77,21 +77,15 @@ jobs:
          path: hw.exe
          retention-days: 1
          
-  send:
-    needs: build
+  telegram:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v1
-        
-      
-      - name: folders
-        run:  ls
-      
-      - uses: actions/checkout@master
-      - name: send message
-        uses: appleboy/telegram-action@master
+    needs: build
+    steps: 
+      - uses: actions/download-artifact@master
+      - uses: appleboy/telegram-action@master 
         with:
-          to: ${{ secrets.TELEGRAM_TO_DEBUG }}
-          token: ${{ secrets.TELEGRAM_TOKEN_DEBUG }}
-          message: send message Emshanov Pavel
-          document: "my-artifact/*.exe"
+          name: send_to_bot
+          to: ${{ secrets.TELEGRAM_TO_DEBUG }} 
+          token: ${{ secrets.TELEGRAM_TOKEN_DEBUG }} 
+          message: Emshanov Pavel
+          document: "/home/runner/work/gha_cpp-Dev-will-work/gha_cpp-Dev-will-work/my-artifact/*.exe"
