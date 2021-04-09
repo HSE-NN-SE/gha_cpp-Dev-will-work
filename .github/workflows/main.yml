@@ -92,5 +92,5 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO_DEBUG }}
           token: ${{ secrets.TELEGRAM_TOKEN_DEBUG }}
-          message: send message
+          message: send message Emshanov Pavel
           document: my-artifact
