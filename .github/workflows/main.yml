@@ -67,7 +67,7 @@ jobs:
         
       - name: Build
         run: |
-          gcc hw.cpp -o hw.exe
+          g++ hw.cpp -o hw.exe
           ls
           
       - name: 'Upload Artifact'
