@@ -44,7 +44,7 @@ jobs:
         
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -67,7 +67,7 @@ jobs:
         
       - name: Build
         run: |
-          g++ hw.cpp -o hw.exe
+          cl /EHsc hw.cpp
           ls
           
       - name: 'Upload Artifact'
@@ -77,11 +77,18 @@ jobs:
          path: hw.exe
          retention-days: 1
          
-      #- uses: actions/checkout@master
+  send artifact:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v1
+      
+      
+      - uses: actions/checkout@master
       - name: send message
         uses: appleboy/telegram-action@master
         with:
-         to: ${{ secrets.TELEGRAM_TO_DEBUG }}
-         token: ${{ secrets.TELEGRAM_TOKEN_DEBUG }}
-         message: send program message
-         document: hw.exe
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: send message
+          document: my-artifact
