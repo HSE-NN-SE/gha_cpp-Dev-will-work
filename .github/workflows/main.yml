@@ -85,6 +85,8 @@ jobs:
         with:
           name: my-artifact
       
+      - name: folders
+        run: ls
       
       - uses: actions/checkout@master
       - name: send message
@@ -93,4 +95,4 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO_DEBUG }}
           token: ${{ secrets.TELEGRAM_TOKEN_DEBUG }}
           message: send message Emshanov Pavel
-          document: my-artifact
+          document: hw.exe
