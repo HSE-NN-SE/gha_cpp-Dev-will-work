@@ -77,7 +77,7 @@ jobs:
          path: hw.exe
          retention-days: 1
          
-  send artifact:
+  send:
     needs: build
     runs-on: ubuntu-latest
     steps:
