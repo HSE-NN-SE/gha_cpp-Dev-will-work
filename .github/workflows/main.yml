@@ -84,10 +84,9 @@ jobs:
       - uses: actions/download-artifact@v1
         with:
           name: my-artifact
-          path: my-artifact/hw.exe
       
       - name: folders
-        run: ls
+        run:  ls
       
       - uses: actions/checkout@master
       - name: send message
@@ -96,4 +95,4 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO_DEBUG }}
           token: ${{ secrets.TELEGRAM_TOKEN_DEBUG }}
           message: send message Emshanov Pavel
-          document: hw.exe
+          document: my-artifact/hw.exe
