@@ -66,5 +66,13 @@ jobs:
         run: env
         
       - name: Build
-        run: cl /EHsc *.cpp
-        
+        run: |
+          cl /EHsc *.cpp
+          ls
+          
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+         name: my-artifact
+         path: hw.exe
+         retention-days: 1
